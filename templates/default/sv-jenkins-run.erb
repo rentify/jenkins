@@ -7,9 +7,10 @@
 
 
 exec 2>&1
+<% groups = node['jenkins']['master']['groups'].join(':') %>
 cd <%= node['jenkins']['master']['home'] %>
 touch jenkins.start
-exec chpst -u <%= node['jenkins']['master']['user'] %> -U <%= node['jenkins']['master']['user'] %> \
+exec chpst -u <%= groups %> -U <%= groups %> \
   env HOME=<%= node['jenkins']['master']['home'] %> \
   JENKINS_HOME=<%= node['jenkins']['master']['home'] %> \
   <%= node['jenkins']['java'] %> <%= node['jenkins']['master']['jvm_options'] %> -jar jenkins.war \
