@@ -126,6 +126,11 @@ default['jenkins']['master'].tap do |master|
   master['group'] = 'jenkins'
 
   #
+  # Any extra groups that the jenkins user needs to run under.
+  #
+  master['groups'] = []
+
+  #
   # Jenkins user/group should be created as `system` accounts for `war` install.
   # The default of `true` will ensure that **new** jenkins user accounts are
   # created in the system ID range, exisitng users will not be modified.

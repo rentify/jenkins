@@ -7,7 +7,7 @@
 
 
 exec 2>&1
-<% groups = node['jenkins']['master']['groups'].join(':') %>
+<% groups = ([node['jenkins']['master']['group']] + node['jenkins']['master']['groups']).join(':') %>
 cd <%= node['jenkins']['master']['home'] %>
 touch jenkins.start
 exec chpst -u <%= groups %> -U <%= groups %> \
